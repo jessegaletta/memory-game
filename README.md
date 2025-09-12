@@ -1,85 +1,85 @@
 # WebDev-FinalProject
 
-## Tema progetto
+## Project Topic
 
-È stato implementato il classico gioco Memory che consiste nell'indovinare delle coppie di immagini.
+The classic Memory game has been implemented, where the goal is to guess pairs of images.
 
-## Requisiti
+## Requirements
 
-- **Connessione internet**
-- **JSONBin** (vedi "Procedura per creare un database vuoto")
+- **Internet connection**
+- **JSONBin** (see "Procedure for creating an empty database")
 
-Le immagini del gioco vengono caricate in modo dinamico con il link "https://picsum.photos/200?random=X".
+The game's images are dynamically loaded using the link `https://picsum.photos/200?random=X`.
 
-(X = numero dell'immagine random, ogni coppia ha lo stesso numero).
+(X = random image number, each pair has the same number).
 
-## Procedura per creare un database vuoto
+## Procedure for creating an empty database
 
-1. Creare un account in [**JSONBin**](https://jsonbin.io/) e accedere al portale.
-2. Nella sezione "API-KEY", creare una "X-Access-Key" con permessi di lettura e aggiornamento, in quanto vengono effettuate solo richieste GET e PUT.
-3. Nella sezione "BINS" creare un nuovo file con la seguente struttura:
+1. Create an account on [**JSONBin**](https://jsonbin.io/) and log in to the portal.
+2. In the "API-KEY" section, create an "X-Access-Key" with read and write permissions, as only GET and PUT requests are made.
+3. In the "BINS" section, create a new file with the following structure:
 
-```
-{
-  "users": [],
-  "scores": []
-}
-```
+    ```json
+    {
+      "users": [],
+      "scores": []
+    }
+    ```
 
-4. Modificare nel file "assets/js/server.js" del progetto le due variabili globali (URL del file bin e ACCESSKEY).
+4. Modify the two global variables (file bin URL and ACCESSKEY) in the `assets/js/server.js` file of the project.
 
-## Funzionalità implementate
+## Implemented Features
 
-### Pagina iniziale (index.html)
+### Home Page (index.html)
 
-Pagina introduttiva con piccolo memory game. Al passaggio del mouse vengono mostrate le immagini, l'unico elemento cliccabile è il "Play Now" pulsante.
-La posizione delle immagini in questo caso è statica (mi è servita questa pagina per implementare la logica del gioco successivamente).
+Introductory page with a small memory game. When hovering the mouse, images are displayed. The only clickable element is the "Play Now" button.  
+In this case, the positions of the images are static (this page was used to implement the game logic later).
 
 ### Login (login.html)
 
-Controllo utente e password (vedi sezione "Gestione sessione utente"). Per accedere, creare un nuovo utente.
+User and password verification (see "User session management" section). To log in, create a new user.
 
-### Registrazione utente (register.html)
+### User Registration (register.html)
 
-È possibile registrare un nuovo utente. Viene controllato se l'utente è già stato creato, che la password e la conferma password corrispondano e che la data di nascita sia almeno di 5 anni fa. Non ho implementato limitazioni particolari alla password, quindi nessun carattere minimo e nessuna regola di sicurezza.
+A new user can be registered. It checks if the user has already been created, if the password and confirmation match, and if the birthdate is at least 5 years ago. No special password restrictions have been implemented, so there's no minimum character requirement or security rule.
 
-### Recupero password (forgot.html)
+### Password Recovery (forgot.html)
 
-Procedura composta da 3 passaggi:
+Procedure composed of 3 steps:
 
-1. Inserimento utente, email e data di nascita
-2. Risposta alla domanda segreta
-3. Inserimento nuova password
+1. Enter username, email, and birthdate
+2. Answer the security question
+3. Enter a new password
 
-### Gioco (game.html)
+### Game (game.html)
 
-Cuore dell'applicazione. Una volta avviato, appena si gira una carta, parte il timer di 1 minuto. Al termine del gioco viene salvata la partita e viene mostrata la posizione in classifica del punteggio della partita effettuata (con confronto al punteggio migliore ottenuto).
+The core of the application. Once started, a timer of 1 minute begins as soon as a card is flipped. At the end of the game, the session is saved, and the player's ranking for the game score is shown (compared to the best score obtained).
 
-#### Calcolo del punteggio
+#### Score Calculation
 
-- **Coppia indovinata**: +100 punti
-- **Combo** (due coppie indovinate consecutive): +100 + 50 = +150 punti
-- **Stessa carta girata due volte**: -10 punti
-- **Bonus tempo**: 5 punti \* secondi avanzati
+- **Correct pair**: +100 points
+- **Combo** (two consecutive correct pairs): +100 + 50 = +150 points
+- **Same card flipped twice**: -10 points
+- **Time bonus**: 5 points * remaining seconds
 
-### Punteggi (scores.html)
+### Scores (scores.html)
 
-Viene mostrata la classifica di tutte le partite giocate di tutti gli utenti e viene evidenziato il miglior punteggio effettuato dal giocatore.
+The leaderboard of all games played by all users is displayed, and the best score achieved by the player is highlighted.
 
-### Profilo (profile.html)
+### Profile (profile.html)
 
-Si può visualizzare il proprio profilo utente e si possono modificare i propri dati anagrafici e di sicurezza.
+The user’s profile can be viewed, and personal and security details can be updated.
 
-## Gestione sessione utente
+## User Session Management
 
-Lavorando solo con Javascript, ho simulato la sessione utente memorizzando in localStorage lo username dell'utente collegato (vedi "assets/js/session.js").
+Working only with JavaScript, I simulated the user session by storing the connected user's username in `localStorage` (see `assets/js/session.js`).
 
-## API esterne
+## External APIs
 
 - [**JSONBin**](https://jsonbin.io/)
 
-Questo portale permette di gestire file JSON tramite richieste fetch.
+This portal allows the management of JSON files via fetch requests.
 
-In assenza di un backend, tutto il database degli utenti e delle partite con i punteggi è stato gestito con un file JSON hostato in questo portale.
+In the absence of a backend, all the user and game score data is managed with a JSON file hosted on this portal.
 
-La logica server è simulata in javascript manipolando questo file (vedi "assets/js/server.js").
+The server logic is simulated in JavaScript by manipulating this file (see `assets/js/server.js`).
