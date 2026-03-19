@@ -1,4 +1,4 @@
-# Memory Game 🎮
+# Memory game 🎮
 
 > [!NOTE]
 > **Academic Project**: Developed as the final project for the **Web Development** course at **EPICODE Institute of Technology**.
