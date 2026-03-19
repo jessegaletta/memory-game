@@ -1,5 +1,14 @@
 # WebDev-FinalProject 🎮
 
+> [!NOTE]
+> **Academic Project**: Developed as the final project for the **Web Development** course at **EPICODE Institute of Technology**.
+> 
+> This repository contains the source code and documentation required for the examination.
+> 
+> 📄 **Official Requirements**: [Download Project Specifications (PDF)](docs/requirements.pdf)
+
+---
+
 ## Project Topic 🧐
 
 The classic **Memory** game has been implemented, where the goal is to guess pairs of images. 🖼️🧠
